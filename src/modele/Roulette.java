@@ -1,6 +1,6 @@
 package modele;
 
-public final class Roulette implements I_Roulette {
+public final class Roulette extends Ab_Roulette {
 
 	private char [] symboles;
 	private float [] probabilites;

@@ -1,4 +1,4 @@
-package modele;
+package modele.comportements;
 
 public interface I_RegleGain {
 	

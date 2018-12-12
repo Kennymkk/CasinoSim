@@ -1,5 +1,7 @@
 package modele;
 
+import modele.comportements.I_RegleGain;
+
 public class RegleGainRoulette implements I_RegleGain {
 
 	@Override
