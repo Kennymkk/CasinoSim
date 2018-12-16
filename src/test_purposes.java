@@ -32,6 +32,11 @@ public class test_purposes {
 		
 		@SuppressWarnings("unused")
 		int debug=0;
+		System.out.println(m.getStringOfWheels());
+		for(int i=0;i<10;i++) {
+			System.out.println("The player has won :"+m.jouer());
+			System.out.println(m.getStringOfWheels());
+		}
 	}
 
 }
