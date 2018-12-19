@@ -6,8 +6,7 @@ import modele.comportements.I_RulesGainWheel;
  * Effective class of machine manchot
  * Follow a Strategy Pattern around the wheels (who are abstract class) and the rules (interface) used to determine the gain
  * 
- * @param wheels
- * @param rules
+ * @author Kenny
  */
 public class MachineManchot extends Ab_Machine{
 
@@ -48,9 +47,37 @@ public class MachineManchot extends Ab_Machine{
 	private int countLockedWheels() {
 		int lockedWheels=0;
 		for(int i=0;i<locked.length;i++) {
-			lockedWheels++;
+			if(locked[i]) {
+				lockedWheels++;
+			}			
 		}
 		return lockedWheels;
+	}
+	
+	
+	
+	/**
+	 * @return the arrWheel
+	 */
+	public Ab_Roulette[] getArrWheel() {
+		return arrWheel;
+	}
+
+	/**
+	 * @param arrWheel the arrWheel to set
+	 */
+	public void setArrWheel(Ab_Roulette[] arrWheel) {
+		this.arrWheel = arrWheel;
+	}
+	
+	public void lockWheel(int index) {
+		if(this.countLockedWheels()<this.arrWheel.length-1) {
+			this.locked[index]=true;
+		}
+	}
+	
+	public void unlockWheel(int index) {
+		this.locked[index]=false;
 	}
 
 	public MachineManchot(Ab_Roulette[] wheels,I_RulesGainWheel rules) {
@@ -61,6 +88,8 @@ public class MachineManchot extends Ab_Machine{
 			locked[i]=false;
 		}
 	}
+	
+	
 
 
 }

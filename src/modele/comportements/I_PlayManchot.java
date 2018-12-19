@@ -1,12 +1,14 @@
 package modele.comportements;
 
+import modele.MachineManchot;
+
 /**
  * A behavior class for the players who should be able to play manchot
  * @author Kenny
  *
  */
-public interface I_JouerManchot {
+public interface I_PlayManchot extends I_PlayAMachine {
 
 	public void verrouiller(int index);
-	public void jouerManchot();
+	public int jouerManchot(MachineManchot mach); //play one time
 }

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 import modele.MachineManchot;
-import modele.Roulette;
+import modele.Wheel;
 import modele.RulesGainWheel;
 
 public class test_purposes {
@@ -21,11 +21,12 @@ public class test_purposes {
 		}
 	
 			
-		Roulette rr =new Roulette(global);
-		Roulette rr2 =new Roulette(global);
-		Roulette rr3 =new Roulette(global);
+		Wheel rr =new Wheel(global);
+		Wheel rr2 =new Wheel(global);
+		Wheel rr3 =new Wheel(global);
 		
-		Roulette [] tab= {rr,rr2,rr3};
+						
+		Wheel [] tab= {rr,rr2,rr3};
 		RulesGainWheel rules=new RulesGainWheel();
 		
 		MachineManchot m = new MachineManchot(tab,rules);

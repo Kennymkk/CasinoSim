@@ -5,6 +5,6 @@ package modele.comportements;
  * @author Kenny
  *
  */
-public interface I_ChangerMachine {
+public interface I_ChangeMachine {
 	public void changeMachine();
 }

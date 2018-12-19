@@ -12,11 +12,8 @@ import java.util.TreeMap;
  * @author Kenny
  *
  */
-public final class Roulette extends Ab_Roulette {
+public final class Wheel extends Ab_Roulette {
 
-	private int stopIndex;
-	private final float PRECISION=0.001f; //used manly as a delta to ensure the stacked probabilities are around 1;
-	private Symbol [] symbols;
 	
 	@Override
 	/**
@@ -38,6 +35,10 @@ public final class Roulette extends Ab_Roulette {
 	public Symbol getStoppedSymbol() {
 		return symbols[stopIndex];
 	}
+	
+	public Symbol [] getSymbols() {
+		return this.symbols;
+	}
 		
 	/**
 	 * 
@@ -49,13 +50,14 @@ public final class Roulette extends Ab_Roulette {
 	 * the given probabilities
 	 * @throws Exception 
 	 */
-	public Roulette(HashMap<String,HashMap<String,Float>> map_data ) throws Exception {		
+	public Wheel(HashMap<String,HashMap<String,Float>> map_data ) throws Exception {		
 		
 		float currentProbaStack=0;
 		int i=0;	
 		int wheelSize=map_data.size();
 		
 		this.symbols=new Symbol[wheelSize];
+		
 		//This loop will create the probability value to work with the current randomize mechanism and set others values
 		for(Entry<String,HashMap<String,Float>> entry : map_data.entrySet()) {
 			this.symbols[i]=new Symbol();
@@ -77,7 +79,6 @@ public final class Roulette extends Ab_Roulette {
 		
 		//We now randomize the starting index
 		this.randomizeSymbol();
-
 	}
 	
 }
