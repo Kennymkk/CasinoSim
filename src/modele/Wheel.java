@@ -32,10 +32,17 @@ public final class Wheel extends Ab_Roulette {
 		
 	}
 	
+	/**
+	 * return the currently stopped symbol
+	 */
 	public Symbol getStoppedSymbol() {
 		return symbols[stopIndex];
 	}
 	
+	/**
+	 * 
+	 * @return the list of symbols
+	 */
 	public Symbol [] getSymbols() {
 		return this.symbols;
 	}
@@ -48,6 +55,9 @@ public final class Wheel extends Ab_Roulette {
 	 * "probability" should represent the probability to get the current symbol, the constructor will then build the array of symbols
 	 * BUT the different probability will stack on each cell of the array, to perform the a randomGet on those symbols according to 
 	 * the given probabilities
+	 * 
+	 * After thought, it's a bad idea, we should rather have done the "stacking" in the randomizeWheels function, because the way it is, it's harder to get the probability to obtain a symbol
+	 * 
 	 * @throws Exception 
 	 */
 	public Wheel(HashMap<String,HashMap<String,Float>> map_data ) throws Exception {		

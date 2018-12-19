@@ -8,7 +8,7 @@ import modele.Player;
 import modele.RulesGainWheel;
 import modele.Wheel;
 import modele.comportements.Bhvr_ChangeMachineClassic;
-import modele.comportements.Bhvr_JouerManchotClassic;
+import modele.comportements.Bhvr_PlayManchotClassic;
 import modele.comportements.I_PlayAMachine;
 
 public class test_Whole {
@@ -28,7 +28,7 @@ public class test_Whole {
 	
 	public static ArrayList<Player> createPlayers(){
 		
-		Bhvr_JouerManchotClassic bhvr_manchot=new Bhvr_JouerManchotClassic();
+		Bhvr_PlayManchotClassic bhvr_manchot=new Bhvr_PlayManchotClassic();
 		I_PlayAMachine [] arr_behavior=new I_PlayAMachine [1];
 		Bhvr_ChangeMachineClassic bhvr_changeMachine=new Bhvr_ChangeMachineClassic();
 		

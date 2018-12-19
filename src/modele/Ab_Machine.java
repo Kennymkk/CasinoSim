@@ -1,6 +1,11 @@
 package modele;
 
 
+/**
+ * Abstract class representing a machine, could potentially be extented to be any type of money machine
+ * @author Kenny
+ *
+ */
 public abstract class Ab_Machine {
 
 	protected int pactole; // Current total value of token in the machine
@@ -9,6 +14,7 @@ public abstract class Ab_Machine {
 	private Player currentPlayer;
 	
 	
+	public abstract int play();
 	
 	/**
 	 * @return the pactole
@@ -66,6 +72,10 @@ public abstract class Ab_Machine {
 		this.currentPlayer = currentPlayer;
 	}
 	
+	/**
+	 * 
+	 * @param cost
+	 */
 	public Ab_Machine(int cost) {
 		this.cost=cost;
 	}

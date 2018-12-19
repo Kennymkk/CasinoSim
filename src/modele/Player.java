@@ -14,7 +14,7 @@ public class Player {
 	protected int id;
 	protected Ab_Machine currentMachine;
 	
-	protected HashMap<Class,I_PlayAMachine> implementedInterfaces; //First one is the implemented interface, 2nd one is the concrete behavior class
+	protected HashMap<Class,I_PlayAMachine> implementedInterfaces; //First one is the implemented interface, 2nd one is the concrete behavior object
 	//private Machine machineActuelle;
 	public I_ChangeMachine bhvr_changeMach;
 	
@@ -40,19 +40,16 @@ public class Player {
 				System.err.println("A implementation of play behavior should implement only one play behavior interface");
 			}
 			Class superClass=classArr_implementedInterfaces[0];
-			//The idea was to use .getSuperClass() but it does'nt work with interfaces extending interfaces. 
-			/*
-			Class [] classArr_superClass=classArr_implementedInterfaces[0].getInterfaces();
-			if(classArr_superClass.length>1) {
-				System.err.println("A extension of play behavior should extends or implement only one play behavior interface");
-			}
-			*/
 			
 			implementedInterfaces.put(superClass, arrComp_play[i]);
 		}
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean playerCanPlayOnCurrentMachine() {
 		if(stockToken>=currentMachine.getCost()) {
 			return true;

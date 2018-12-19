@@ -10,12 +10,12 @@ import modele.GeneralPurpose;
 /**
  * 
  * @author Kenny
- *
+ * Simple implementation of playManchot Behavior
  */
-public class Bhvr_JouerManchotClassic implements I_PlayManchot{
+public class Bhvr_PlayManchotClassic implements I_PlayManchot{
 
 	@Override
-	public void verrouiller(int index) {
+	public void play(int index) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -25,7 +25,7 @@ public class Bhvr_JouerManchotClassic implements I_PlayManchot{
 	 * The behavior is like this : if more than half of the slot got the same symbol, the player tries to lock them
 	 * @param mach
 	 */	
-	public int jouerManchot(MachineManchot mach) {
+	public int playManchot(MachineManchot mach) {
 		Ab_Roulette [] arr_Wheel=mach.getArrWheel();
 		//We assume here that all the roulette got the same symbols!
 		HashMap<String,Integer> symbolMap = new HashMap();
@@ -41,6 +41,7 @@ public class Bhvr_JouerManchotClassic implements I_PlayManchot{
 				symbolMap.put(stoppedSymbol.symbol, 1);
 			}
 		}
+		
 		String maxSymbol=GeneralPurpose.getMaxOfParamHashMap(symbolMap);
 		for(int i=0;i<arr_Wheel.length;i++) {
 			if(arr_Wheel[i].getStoppedSymbol().symbol==maxSymbol) {
@@ -48,7 +49,7 @@ public class Bhvr_JouerManchotClassic implements I_PlayManchot{
 			}
 		}
 		
-		return mach.jouer();
+		return mach.play();
 		
 	}
 
