@@ -28,10 +28,15 @@ public class Casino {
 	
 	private void playersPlay() {
 		Ab_Machine mach;
+		
+		int gain=0;
+		int previousGain[]=new int[10];
+		
 		for(int i=0;i<arr_Players.size();i++) {
-			
 			Player loopPlayer=arr_Players.get(i);
 			mach=loopPlayer.getCurrentMachine();
+			
+			previousGain[i]=loopPlayer.getStockJeton();
 			
 			if(mach!=null) {
 				Class class_machine=mach.getClass();
@@ -44,16 +49,18 @@ public class Casino {
 						I_PlayManchot behavior= (I_PlayManchot) loopPlayer.getImplementedInterfaces().get(I_PlayManchot.class);						
 						
 						//Next statement do the play!
-						loopPlayer.play(mach.getCost(), behavior.jouerManchot((MachineManchot)mach));
+						gain=loopPlayer.play(mach.getCost(), behavior.jouerManchot((MachineManchot)mach));
 					}
 					//else if(...
 				}
 			}
 			
 			//TEMPORARY DISPLAY
+			//TODO A real MV program
 			MachineManchot castedMach=(MachineManchot) mach;
-			System.out.println("Player with id"+loopPlayer.getId() +"has rolled :");
+			System.out.println("Player with id "+loopPlayer.getId() +" has rolled :");
 			System.out.println(castedMach.getStringOfWheels());
+			System.out.println("he gained :" +gain+"since he previously had " + previousGain[i]+"he now have "+loopPlayer.getStockJeton());
 		}
 	}
 	

@@ -36,7 +36,7 @@ public class test_Whole {
 		arr_behavior[0]=bhvr_manchot;
 		ArrayList<Player> arrL_player=new ArrayList<Player>();
 		for(int i=0;i<3;i++) {
-			arrL_player.add(new Player(i*10,i,arr_behavior, bhvr_changeMachine));
+			arrL_player.add(new Player((i+1)*10,i,arr_behavior, bhvr_changeMachine));
 		}
 		
 		return arrL_player;
