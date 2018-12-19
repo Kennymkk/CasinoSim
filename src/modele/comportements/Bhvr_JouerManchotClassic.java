@@ -12,7 +12,7 @@ import modele.GeneralPurpose;
  * @author Kenny
  *
  */
-public class Comp_JouerManchotClassic implements I_PlayManchot{
+public class Bhvr_JouerManchotClassic implements I_PlayManchot{
 
 	@Override
 	public void verrouiller(int index) {
@@ -32,6 +32,7 @@ public class Comp_JouerManchotClassic implements I_PlayManchot{
 		Symbol [] arr_symbols;
 		for(int i=0;i<arr_Wheel.length;i++) {
 			Symbol stoppedSymbol=arr_Wheel[i].getStoppedSymbol();
+			
 			//Counting the numbers of occurences of symbols
 			if(symbolMap.containsKey(stoppedSymbol.symbol)) {
 				symbolMap.put(stoppedSymbol.symbol, symbolMap.get(stoppedSymbol.symbol)+1);

@@ -7,7 +7,8 @@ import modele.MachineManchot;
 import modele.Player;
 import modele.RulesGainWheel;
 import modele.Wheel;
-import modele.comportements.Comp_JouerManchotClassic;
+import modele.comportements.Bhvr_ChangeMachineClassic;
+import modele.comportements.Bhvr_JouerManchotClassic;
 import modele.comportements.I_PlayAMachine;
 
 public class test_Whole {
@@ -27,11 +28,15 @@ public class test_Whole {
 	
 	public static ArrayList<Player> createPlayers(){
 		
-		Comp_JouerManchotClassic bhvr_manchot=new Comp_JouerManchotClassic();
+		Bhvr_JouerManchotClassic bhvr_manchot=new Bhvr_JouerManchotClassic();
 		I_PlayAMachine [] arr_behavior=new I_PlayAMachine [1];
+		Bhvr_ChangeMachineClassic bhvr_changeMachine=new Bhvr_ChangeMachineClassic();
+		
+		
+		arr_behavior[0]=bhvr_manchot;
 		ArrayList<Player> arrL_player=new ArrayList<Player>();
 		for(int i=0;i<3;i++) {
-			arrL_player.add(new Player(i*10,i,arr_behavior));
+			arrL_player.add(new Player(i*10,i,arr_behavior, bhvr_changeMachine));
 		}
 		
 		return arrL_player;
@@ -44,7 +49,7 @@ public class test_Whole {
 		
 		for(int i=0;i<3;i++) {
 			arr_wheels=test_Whole.createWheelObject(map_wheelModel);
-			arrL_mach.add(new MachineManchot(arr_wheels,rules));
+			arrL_mach.add(new MachineManchot(arr_wheels,rules,i+1));
 		}
 		
 		return arrL_mach;

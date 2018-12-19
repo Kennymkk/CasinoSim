@@ -2,7 +2,8 @@ package modele;
 
 import java.util.ArrayList;
 
-import modele.comportements.Comp_JouerManchotClassic;
+import modele.comportements.Bhvr_JouerManchotClassic;
+import modele.comportements.I_PlayManchot;
 
 public class Casino {
 
@@ -29,15 +30,30 @@ public class Casino {
 		Ab_Machine mach;
 		for(int i=0;i<arr_Players.size();i++) {
 			
-			mach=arr_Players.get(i).getCurrentMachine();
-			Class class_machine=mach.getClass();
+			Player loopPlayer=arr_Players.get(i);
+			mach=loopPlayer.getCurrentMachine();
 			
-			if(class_machine==MachineManchot.class) {
-				Comp_JouerManchotClassic behavior= (Comp_JouerManchotClassic) arr_Players.get(i).getImplementedInterfaces().get(class_machine);
-				//TODO set price as a machine component
-				arr_Players.get(i).play(1, behavior.jouerManchot((MachineManchot)mach));
+			if(mach!=null) {
+				Class class_machine=mach.getClass();
+				if(loopPlayer.playerCanPlayOnCurrentMachine()) {
+					if(class_machine==MachineManchot.class) {
+						
+						//We are getting : the type of interface we need to seek into the player playInterface catalog; by : giving the Class to relation
+						Constants.getRelation().get(class_machine);
+						
+						I_PlayManchot behavior= (I_PlayManchot) loopPlayer.getImplementedInterfaces().get(I_PlayManchot.class);						
+						
+						//Next statement do the play!
+						loopPlayer.play(mach.getCost(), behavior.jouerManchot((MachineManchot)mach));
+					}
+					//else if(...
+				}
 			}
 			
+			//TEMPORARY DISPLAY
+			MachineManchot castedMach=(MachineManchot) mach;
+			System.out.println("Player with id"+loopPlayer.getId() +"has rolled :");
+			System.out.println(castedMach.getStringOfWheels());
 		}
 	}
 	
@@ -45,5 +61,7 @@ public class Casino {
 		playersChangeMachine();
 		playersPlay();
 	}
+	
+	
 	
 }

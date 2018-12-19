@@ -14,7 +14,8 @@ public class MachineManchot extends Ab_Machine{
 	private Ab_Roulette [] arrWheel;
 	private boolean [] locked;
 	
-	@Override
+	
+	
 	/**
 	 * play function of the abstract machine
 	 * Randomize unlocked wheels and return eventual gain to the player (via arrWheel and compRules)
@@ -56,6 +57,8 @@ public class MachineManchot extends Ab_Machine{
 	
 	
 	
+	
+
 	/**
 	 * @return the arrWheel
 	 */
@@ -80,7 +83,8 @@ public class MachineManchot extends Ab_Machine{
 		this.locked[index]=false;
 	}
 
-	public MachineManchot(Ab_Roulette[] wheels,I_RulesGainWheel rules) {
+	public MachineManchot(Ab_Roulette[] wheels,I_RulesGainWheel rules,int cost) {
+		super(cost);
 		this.compRules=rules;
 		this.arrWheel=wheels;
 		this.locked=new boolean[wheels.length];
