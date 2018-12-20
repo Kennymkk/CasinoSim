@@ -30,7 +30,16 @@ public class MachineManchot extends Ab_Machine{
 			results[i]=arr_Wheel[i].getStoppedSymbol();
 		}
 		
-		return bhvr_Rules.determineGain(results, this.countLockedWheels());
+		int gain=bhvr_Rules.determineGain(results, this.countLockedWheels(),this);
+		if(this.pactole<gain) {
+			gain=this.pactole;
+			this.pactole=0;
+			return gain;
+		}
+		else {		
+			this.pactole-=gain;
+			return gain;
+		}
 	}
 	
 	/**
@@ -89,7 +98,7 @@ public class MachineManchot extends Ab_Machine{
 		this.locked[index]=false;
 	}
 
-	public MachineManchot(Ab_Roulette[] wheels,I_RulesGainWheel rules,int cost) {
+	public MachineManchot(Ab_Roulette[] wheels,I_RulesGainWheel rules,int cost,int pactole) {
 		super(cost);
 		this.bhvr_Rules=rules;
 		this.arr_Wheel=wheels;
@@ -97,6 +106,7 @@ public class MachineManchot extends Ab_Machine{
 		for(int i=0;i<locked.length;i++) {
 			locked[i]=false;
 		}
+		this.pactole=pactole;
 	}
 	
 	

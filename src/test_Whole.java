@@ -5,9 +5,10 @@ import modele.Ab_Machine;
 import modele.Casino;
 import modele.MachineManchot;
 import modele.Player;
-import modele.RulesGainWheel;
 import modele.Wheel;
 import modele.comportements.Bhvr_ChangeMachineClassic;
+import modele.comportements.Bhvr_ClassicGainWheel;
+import modele.comportements.Bhvr_FullGainWheel;
 import modele.comportements.Bhvr_PlayManchotClassic;
 import modele.comportements.I_PlayAMachine;
 
@@ -45,11 +46,16 @@ public class test_Whole {
 	public static ArrayList<Ab_Machine> createMachines(HashMap<String,HashMap<String,Float>> map_wheelModel) throws Exception {
 		ArrayList<Ab_Machine> arrL_mach=new ArrayList<Ab_Machine>();
 		Wheel[] arr_wheels;
-		RulesGainWheel rules=new RulesGainWheel();
+		
+		//Switch comments to alternate between different gain methods
+		
+		Bhvr_ClassicGainWheel rules=new Bhvr_ClassicGainWheel();
+		//Bhvr_FullGainWheel rules=new Bhvr_FullGainWheel();
+		
 		
 		for(int i=0;i<3;i++) {
 			arr_wheels=test_Whole.createWheelObject(map_wheelModel);
-			arrL_mach.add(new MachineManchot(arr_wheels,rules,i+1));
+			arrL_mach.add(new MachineManchot(arr_wheels,rules,i+1,500));
 		}
 		
 		return arrL_mach;

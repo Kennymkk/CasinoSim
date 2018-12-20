@@ -1,5 +1,6 @@
 package modele.comportements;
 
+import modele.MachineManchot;
 import modele.Symbol;
 
 /**
@@ -9,5 +10,6 @@ import modele.Symbol;
  */
 public interface I_RulesGainWheel {
 	
-	public int determineGain(Symbol[] symbols,int nbOfLockedWheels) ;
+	//TODO remove all parameters but MachineManchot and do change accordingly
+	public int determineGain(Symbol[] symbols,int nbOfLockedWheels,MachineManchot mach) ;
 }
